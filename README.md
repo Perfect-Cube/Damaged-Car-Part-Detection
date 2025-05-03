@@ -1,5 +1,11 @@
 # Damaged-Car-Part-Detection
 
+-DOWNLOAD OLLAMA THEN CMD
+```
+ollama run gemma3:4b
+```
+
+
 __1. Starts a web page where you can upload a photo__
 
 The st.file_uploader widget in Streamlit displays a button that lets you pick an image file from your computer. Once you select a file, Streamlit reads it into memory as bytes you can work with in Python 
