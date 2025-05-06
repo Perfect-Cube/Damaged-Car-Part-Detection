@@ -24,7 +24,7 @@ st.subheader("Original Image")
 st.image(image, use_container_width=True)
 
 # 2. Detect with DETR
-detr = pipeline("object-detection", model="facebook/detr-resnet-50", device=0)  # :contentReference[oaicite:5]{index=5}
+detr = pipeline("object-detection", model="shawnmichael/detr-resnet-50_finetuned_car_detection_v2", device=0)  # :contentReference[oaicite:5]{index=5}
 detections = detr(image)
 
 # 3. Annotate
@@ -32,7 +32,7 @@ annotated = image.copy()
 draw = ImageDraw.Draw(annotated)
 font = ImageFont.load_default()
 for obj in detections:
-    if obj["score"] < 0.3: continue
+    if obj["score"] < 0.55: continue
     x1, y1, x2, y2 = obj["box"].values()
     draw.rectangle([x1, y1, x2, y2], outline="red", width=4)
     draw.text((x1, y1-12), f"{obj['label']} ({obj['score']:.2f})", fill="red", font=font)
@@ -40,7 +40,7 @@ st.subheader("Detected Damage Highlighted")
 st.image(annotated, use_container_width=True)
 
 # 4. Prepare Ollama payload
-b64_img = image_to_base64(annotated)  # :contentReference[oaicite:6]{index=6}
+b64_img = image_to_base64(image)  # :contentReference[oaicite:6]{index=6}
 payload = {
     "model": OLLAMA_MODEL,
     "stream": False,
@@ -48,7 +48,7 @@ payload = {
         {"role": "system",  "content": "You are a car damage assessment assistant."},
         {
             "role": "user",
-            "content": "Analyze this image and describe any visible damage, specifying part, location, and severity.",
+            "content": "Analyze this image and describe any visible damage, specifying part, location and severity.",
             "images": [b64_img]
         }
     ]
