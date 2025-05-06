@@ -1,3 +1,12 @@
+
+
+![car1](https://github.com/user-attachments/assets/e9790aab-cbad-4434-badd-3ce06078c197)
+![car2](https://github.com/user-attachments/assets/4dea6260-f1e0-4ca3-a329-f74d36e6c628)
+![car3](https://github.com/user-attachments/assets/23c52919-0b78-4598-ba8c-3bf2dbcfebb1)
+![car4](https://github.com/user-attachments/assets/e35238cd-f66a-40f2-888d-ea8fb3ef0246)
+
+
+
 # Damaged-Car-Part-Detection
 
 -DOWNLOAD OLLAMA THEN CMD
